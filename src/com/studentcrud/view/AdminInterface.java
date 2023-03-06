@@ -11,30 +11,15 @@ import java.util.Scanner;
 import static com.studentcrud.config.Configuration.*;
 
 public class AdminInterface extends UserInterface {
-    Student student = new Student();
-
-    @Override
-    public void printUser(User user) { //출력하는 메서드.
-        System.out.println(makeUserInfo(student));
-    }
-
-    @Override
-    protected String makeUserInfo(User user){ //인자로 받은 student 타입의 ArrayList 를 출력형식에 맞게 가공하는 메서드
-        return "|이름 :" + student.getName() + " \t\t| 학번 :" + student.getId() + "\t\t| 국어:" + student.getkScore()+ " \t| 영어:" + student.geteScore()
-                + "\t| 수학:" + student.getmScore()+ "\t| 총점:" + (student.getkScore() + student.geteScore() + student.getmScore())+ "\t" +
-                "| 평균 :" + (student.getkScore() + student.geteScore() + student.getmScore()) / 3;
-    }
-
+    /*
+    *
+    * */
     @Override
     protected void checkInstanceValidation(User user) {
         if (!(user instanceof Student)) throw new IllegalArgumentException();
     }
-    protected void checkInstanceValidation2(User user) {
-        if (!(user instanceof Teacher)) throw new IllegalArgumentException();
-    }
 
     public int loginPage() { // 처음 화면을 켰을 때 ui 메서드
-        Scanner sc = new Scanner(System.in);
         int choose = 0, num = 0;
         System.out.println();
         System.out.println("로그인 페이지입니다.");
@@ -139,6 +124,16 @@ public class AdminInterface extends UserInterface {
             return num;
         }
         return num;
+    }
+
+    public void printStudent(User user) { //출력하는 메서드.
+        System.out.println(makeStudentInfo(student));
+    }
+
+    private String makeStudentInfo(Student student){ //인자로 받은 student 타입의 ArrayList 를 출력형식에 맞게 가공하는 메서드
+        return "|이름 :" + student.getName() + " \t\t| 학번 :" + student.getId() + "\t\t| 국어:" + student.getkScore()+ " \t| 영어:" + student.geteScore()
+                + "\t| 수학:" + student.getmScore()+ "\t| 총점:" + (student.getkScore() + student.geteScore() + student.getmScore())+ "\t" +
+                "| 평균 :" + (student.getkScore() + student.geteScore() + student.getmScore()) / 3;
     }
 
     public Student typeStudent() { // 학생 데이터 입력받는 메소드

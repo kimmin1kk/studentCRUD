@@ -1,6 +1,7 @@
 package com.studentcrud.view;
 
 import com.studentcrud.user.Student;
+import com.studentcrud.user.Teacher;
 import com.studentcrud.user.User;
 
 import java.util.InputMismatchException;
@@ -8,12 +9,14 @@ import java.util.Scanner;
 
 import static com.studentcrud.config.Configuration.*;
 
-public abstract class UserInterface<T extends User> {
+public abstract class UserInterface {
+    Student student = new Student();
+    Teacher teacher = new Teacher();
     Scanner sc = new Scanner(System.in);
 
-    public abstract void printUser(User user);
-
-    protected abstract String makeUserInfo(User user);
+//    public abstract void printUser(User user);
+//
+//    protected abstract String makeUserInfo(User user);
 
     public abstract String inputId();
 
@@ -23,7 +26,6 @@ public abstract class UserInterface<T extends User> {
 
     public int getScore() { //점수 입력할 때 예외처리해둔 메서드
         int a = 0;
-        Scanner sc = new Scanner(System.in);
         boolean onOff = true;
         while(onOff) {
             try {
@@ -57,7 +59,6 @@ public abstract class UserInterface<T extends User> {
 
     public int getInput() { //정수형만 입력받을 수 있는 메서드
         int a=0;
-        Scanner sc = new Scanner(System.in);
         while(true) {
             try {
                 a = Integer.parseInt(sc.nextLine());

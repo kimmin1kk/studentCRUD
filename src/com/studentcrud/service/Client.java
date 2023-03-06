@@ -5,18 +5,16 @@ import com.studentcrud.user.Teacher;
 import com.studentcrud.view.AdminInterface;
 import com.studentcrud.view.StudentInterface;
 import com.studentcrud.view.TeacherInterface;
+
 public class Client {
     AdminInterface ai = new AdminInterface();
     StudentInterface si = new StudentInterface();
-    TeacherInterface ti = new TeacherInterface();
+//    TeacherInterface ti = new TeacherInterface(); 아직 안 씀
     UserManager<Student> studentManager = new UserManager<>();
-    UserManager<Teacher> teacherManager = new UserManager<>();
-    Student student = new Student();
-
+//    UserManager<Teacher> teacherManager = new UserManager<>(); 아직 안 씀
     public void run() {// 학생으로 로그인할지 관리자로 로그인할지 고를 수 있는 초기 페이지.
         String id = null;
         String pw = null;
-        int index = 0;
         switch (ai.loginPage()) {
             case 1: // 학생 로그인
                 id = si.inputId();
@@ -48,7 +46,7 @@ public class Client {
         boolean onOff = true;
         while (onOff) {
             switch (ai.adminMainPage()) {
-                case 1:
+                case 1: //학생 입력
                     while (true) {
                         try {
                             studentManager.addUser(ai.typeStudent());
@@ -59,18 +57,21 @@ public class Client {
                         }
                     }
                     break;
-                case 2:
-                    studentManager.findById(si.inputId());
+                case 2: // 학생 검색
+                    ai.printStudent(studentManager.findById(si.inputId()));
                     break;
-                case 3:
-                    si.printUser(student);
+                case 3: // 학생 리스트 출력
+                    for(Student std : studentManager.findAll()) {
+                    ai.printStudent(std);;
+                    }
+
                     break;
-                case 4:
+                case 4: // 삭제
                     studentManager.deleteUserById(si.inputId());
                     break;
-                case 5:
+                case 5: // 로그아웃
                     run(); //break 안 달은 이유 : 로그아웃할 때 현재 창이 종료가 되면서 새로운 창으로 넘어가는 느낌이라서
-                case 6:
+                case 6: // 종료
                     onOff = false;
                     break;
                 default:
@@ -86,7 +87,7 @@ public class Client {
         while (onOff) {
             switch (si.studentMainPage()) {
                 case 1:
-                    si.printUser(student);
+//                    si.printUser(student);
                     break;
                 case 2:
                     switch (si.replaceStudentInformation()) {
@@ -100,7 +101,6 @@ public class Client {
                             studentMainPage(student);
                             break;
                     }
-                    ;
                     break;
                 case 3:
                     run();

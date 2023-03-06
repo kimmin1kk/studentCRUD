@@ -10,20 +10,6 @@ import java.util.Scanner;
 import static com.studentcrud.config.Configuration.*;
 
 public class StudentInterface extends UserInterface{
-    Student student = new Student();
-
-    @Override
-    public void printUser(User user) { //출력하는 메서드.
-        checkInstanceValidation(user);
-        System.out.println(makeUserInfo(student));
-    }
-    @Override
-    protected String makeUserInfo(User user) {
-        return "|이름 :" + student.getName() + " \t\t| 학번 :" + student.getId() + "\t\t| 국어:" + student.getkScore()+ " \t| 영어:" + student.geteScore()
-                + "\t| 수학:" + student.getmScore()+ "\t| 총점:" + (student.getkScore() + student.geteScore() + student.getmScore())+ "\t" +
-                "| 평균 :" + (student.getkScore() + student.geteScore() + student.getmScore()) / 3;
-    }
-
     @Override
     protected void checkInstanceValidation(User user) {
         if (!(user instanceof Student)) throw new IllegalArgumentException();
@@ -90,7 +76,6 @@ public class StudentInterface extends UserInterface{
 
 
     public int replaceStudentInformation() { // 학생으로 로그인해서 수정을 선택했을 때 호출되는 ui 메서드
-        Scanner sc = new Scanner(System.in);
         int num = 0;
         boolean onOff = true;
         while (onOff) {
@@ -130,14 +115,12 @@ public class StudentInterface extends UserInterface{
     }
 
     public void replaceStudentName(Student student) { // 이름을 수정할 때 쓰는 메서드
-        Scanner sc = new Scanner(System.in);
         System.out.print("수정할 이름을 입력해주세요 :");
         String name = sc.nextLine();
         student.setName(name);
     }
 
     public void replaceStudentPassword(Student student) { // 비밀번호를 수정할 때 쓰는 메서드
-        Scanner sc = new Scanner(System.in);
         System.out.print("수정할 비밀번호를 입력해주세요 :");
         String pw = sc.nextLine();
         student.setPw(pw);

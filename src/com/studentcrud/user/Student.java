@@ -14,7 +14,7 @@ public class Student extends User{ //오직 데이터만을 담고있다.
         this.kScore = kScore;
         this. eScore = eScore;
         this.mScore = mScore;
-        this.pw = String.valueOf(id);
+        this.pw = id;
     }
     public Student() { //오버로딩
     }
