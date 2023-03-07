@@ -46,10 +46,9 @@ public class UserManager<T extends User> {
     }
 
     public void deleteUserById(String id) { //삭제
-//        int search = ui.findUser();
         int cnt = 0;
         for (T user : userList) {
-            if (id == user.getId()) {
+            if (id.equals(user.getId())) {
                 userList.remove(cnt);
                 break;
             }

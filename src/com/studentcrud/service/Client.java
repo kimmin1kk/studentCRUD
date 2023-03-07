@@ -18,8 +18,8 @@ public class Client {
         }
     } ;
     public void run() {// 학생으로 로그인할지 관리자로 로그인할지 고를 수 있는 초기 페이지.
-        String id = null;
-        String pw = null;
+        String id;
+        String pw;
         switch (av.loginPage()) {
             case 1: // 학생 로그인
                 id = sv.inputId();
@@ -33,8 +33,19 @@ public class Client {
                     run();
                     break;
                 }
+            case 2: //교직원 로그인
+                id = tv.inputId();
+                pw = tv.inputPw();
 
-            case 2: // 어드민 로그인
+                if(teacherManager.findUserByIdAndPassword(id, pw)) {
+                    teacherMainPage(teacherManager.findById(id));
+                    break;
+                }else {
+                    System.out.println("로그인 실패");
+                    run();
+                    break;
+                }
+            case 3: // 어드민 로그인
                 switch (av.adminLogin()) {
                     case 1: // 로그인 성공
                         adminMainPage();
@@ -77,7 +88,6 @@ public class Client {
                 case 5: //교직원 추가
                     while(true) {
                         try{
-                            //입력 받고 typeTeacher에 넣어주는건? -> 안됨.
                         teacherManager.addUser(av.typeTeacher());
                         av.printSuccessSignUp(); //회원가입 성공 메세지
                         break;
@@ -86,9 +96,13 @@ public class Client {
                             }
                     }
                     break;
-                case 6: //교직원 담당과목 수정
+                case 6: //교직원 리스트 출력
+                    for(Teacher teacher : teacherManager.findAll()){
+                        av.printTeacher(teacher);
+                    }
                     break;
                 case 7: //교직원 삭제
+                    teacherManager.deleteUserById(tv.inputId());
                     break;
                 case 8: // 로그아웃
                     run(); //break 안 달은 이유 : 로그아웃할 때 현재 창이 종료가 되면서 새로운 창으로 넘어가는 느낌이라서
@@ -132,9 +146,36 @@ public class Client {
                     System.out.println("에러 발생");
                     break;
             }
+        }
+    }
+
+    public void teacherMainPage(Teacher teacher) {
+        boolean onOff = true;
+        while (onOff) {
+            switch (tv.teacherMainPage()) {
+                case 1: //학생 검색
+                    av.printStudent(studentManager.findById(sv.inputId()));
+                    break;
+                case 2: //학생 리스트 출력
+                    for(Student std : studentManager.findAll()) {
+                        av.printStudent(std);
+                    }
+                    break;
+                case 3: // 담당과목 점수 수정
+                    break;
+                case 4: // 본인의 이름 및 비번 수정
+                    break;
+                case 5: // 로그아웃
+                    run();
+                case 6: // 종료
+                    onOff = false;
+                    break;
+                default:
+                    System.out.println("에러 발생");
+                    break;
+            }
 
         }
-
     }
 
 

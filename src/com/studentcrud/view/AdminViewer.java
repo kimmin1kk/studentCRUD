@@ -23,7 +23,7 @@ public class AdminViewer extends UserViewer {
         int choose = 0, num = 0;
         System.out.println();
         System.out.println("로그인 페이지입니다.");
-        System.out.println("1. 학생 로그인 | 2. 관리자 로그인");
+        System.out.println("1. 학생 로그인 | 2. 교직원 로그인 | 3. 관리자 로그인");
         while(true){
             choose = getInput();
             if (choose < PREVENT_MINUS_N_ZERO) {
@@ -45,13 +45,7 @@ public class AdminViewer extends UserViewer {
         id = sc.nextLine();
         return id;
     }
-    public String inputPw() { // 비밀번호를 입력하는 메서드
-        Scanner sc = new Scanner(System.in);
-        String pw = null;
-        System.out.print("비밀번호를 입력하세요 :");
-        pw = sc.nextLine();
-        return pw;
-    }
+
 
     public int adminLogin() { // 어드민 로그인을 선택했을 때 ui 메서드
         Scanner sc = new Scanner(System.in);
@@ -77,15 +71,14 @@ public class AdminViewer extends UserViewer {
     }
 
     public int adminMainPage() { // 어드민 로그인했을 때 ui 메서드
-        Scanner sc = new Scanner(System.in);
         boolean onOff=true;
         int num=0;
         while(onOff) {
             System.out.println("---------------------------");
             System.out.println("| 학생 관리 시스템 (관리자용) |");
-            System.out.println("----------------------------------------------------------------------------------------------------");
-            System.out.println("|학생| 1. 추가 | 2. 검색 | 3. 출력 | 4. 삭제 ||교직원| 5. 추가 | 6. 수정 | 7. 삭제 || 8. 로그아웃 | 9. 종료 |");
-            System.out.println("----------------------------------------------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.println("│학생 | 1.추가 | 2.검색 | 3.출력 | 4.삭제 │교직원 | 5.추가 | 6.출력 | 7. 삭제 │ 8.로그아웃 | 9.종료 |");
+            System.out.println("--------------------------------------------------------------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
                 num = getInput();
@@ -116,7 +109,7 @@ public class AdminViewer extends UserViewer {
                 case 5:
                     System.out.println("교직원 추가를 선택하셨습니다.");break;
                 case 6:
-                    System.out.println("교직원 담당과목 수정을 선택하셨습니다.");break;
+                    System.out.println("교직원 리스트 출력을 선택하셨습니다.");break;
                 case 7:
                     System.out.println("교직원 삭제를 선택하셨습니다.");break;
                 case 8:
@@ -140,6 +133,11 @@ public class AdminViewer extends UserViewer {
         return "|이름 :" + student.getName() + " \t\t| 학번 :" + student.getId() + "\t\t| 국어:" + student.getkScore()+ " \t| 영어:" + student.geteScore()
                 + "\t| 수학:" + student.getmScore()+ "\t| 총점:" + (student.getkScore() + student.geteScore() + student.getmScore())+ "\t" +
                 "| 평균 :" + (student.getkScore() + student.geteScore() + student.getmScore()) / 3;
+    }
+    public void printTeacher(Teacher teacher) {System.out.println(makeTeacherInfo(teacher));
+    }
+    private String makeTeacherInfo(Teacher teacher) {
+        return "이름 :" + teacher.getName() + "\t| 아이디 :" + teacher.getId() + "\t| 담당과목 :" + teacher.getSubject();
     }
 
     public Student typeStudent() { // 학생 데이터 입력받는 메소드

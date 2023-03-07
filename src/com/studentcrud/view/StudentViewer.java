@@ -21,13 +21,6 @@ public class StudentViewer extends UserViewer {
         id = getInput();
         return Integer.toString(id);
     }
-    public String inputPw() { // 비밀번호를 입력하는 메서드
-        Scanner sc = new Scanner(System.in);
-        String pw = null;
-        System.out.print("비밀번호를 입력하세요 :");
-        pw = sc.nextLine();
-        return pw;
-    }
 
 
     public int studentMainPage() { // 학생으로 로그인 했을 때 ui 메서드
@@ -38,11 +31,11 @@ public class StudentViewer extends UserViewer {
             System.out.println("-------------------------");
             System.out.println("| 학생 관리 시스템 (학생용) |");
             System.out.println("-----------------------------------");
-            System.out.println("| 1. 성적 열람 | 2 수정 | 3 로그아웃 | 4. 종료 |");
+            System.out.println("| 1. 성적 열람 | 2. 수정 | 3. 로그아웃 | 4. 종료 |");
             System.out.println("-----------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
-                num = sc.nextInt();
+                num = getInput();
             }
             catch (InputMismatchException e) {
                 sc = new Scanner(System.in);
@@ -96,7 +89,7 @@ public class StudentViewer extends UserViewer {
                 sc = new Scanner(System.in);
                 System.out.println("잘못된 입력입니다.");
                 continue;
-            } else if (num > INPUT_RANGE_STUDENT_MODIFY) {
+            } else if (num > INPUT_RANGE_MODIFY) {
                 sc = new Scanner(System.in);
                 System.out.println("잘못된 입력입니다.");
                 continue;

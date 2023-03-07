@@ -9,8 +9,11 @@ public class Teacher extends User{
         super.pw = id;
         this.subject = subject;
     }
-
     public Teacher() { //오버로딩
+    }
+
+    public Subject getSubject() {
+        return subject;
     }
 }
 

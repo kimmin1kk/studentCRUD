@@ -16,7 +16,13 @@ public abstract class UserViewer {
 
     public abstract String inputId();
 
-    public abstract String inputPw();
+    public String inputPw() { // 비밀번호를 입력하는 메서드
+        Scanner sc = new Scanner(System.in);
+        String pw = null;
+        System.out.print("비밀번호를 입력하세요 :");
+        pw = sc.nextLine();
+        return pw;
+    }
 
     protected abstract void checkInstanceValidation(User user);
 
