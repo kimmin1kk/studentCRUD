@@ -2,14 +2,10 @@ package com.studentcrud.user;
 
 public class Teacher extends User{
 
-    private String name;
-    private String id;
-    private String password;
-
     public Teacher(String name, String id) {
-        this.name = name;
-        this.id = id;
-        this.password = password;
+        super.name = name;
+        super.id = id;
+        super.pw = id;
     }
     public Teacher() { //오버로딩
     }
@@ -27,13 +23,13 @@ public class Teacher extends User{
     }
 
     @Override
-    public String getPassword() {
-        return super.getPassword();
+    public String getPw() {
+        return super.getPw();
     }
 
     @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
+    public void setPw(String pw) {
+        super.setPw(pw);
     }
 
     @Override

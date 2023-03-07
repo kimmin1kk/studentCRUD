@@ -1,20 +1,17 @@
 package com.studentcrud.user;
 
 public class Student extends User{ //오직 데이터만을 담고있다.
-    private String name;
-    private String id;
     private int kScore;
     private int eScore;
     private int mScore;
-    private String pw;
 
     public Student(String name, String id, int kScore, int eScore, int mScore) {
-        this.name = name;
-        this.id = id;
+        super.name = name;
+        super.id = id;
+        super.pw = id;
         this.kScore = kScore;
         this. eScore = eScore;
         this.mScore = mScore;
-        this.pw = id;
     }
     public Student() { //오버로딩
     }

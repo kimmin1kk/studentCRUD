@@ -1,8 +1,6 @@
 package com.studentcrud.view;
 
-import com.studentcrud.service.UserManager;
 import com.studentcrud.user.Student;
-import com.studentcrud.user.Teacher;
 import com.studentcrud.user.User;
 
 import java.util.InputMismatchException;
@@ -10,7 +8,7 @@ import java.util.Scanner;
 
 import static com.studentcrud.config.Configuration.*;
 
-public class AdminInterface extends UserInterface {
+public class AdminViewer extends UserViewer {
     /*
     *
     * */
@@ -126,7 +124,7 @@ public class AdminInterface extends UserInterface {
         return num;
     }
 
-    public void printStudent(User user) { //출력하는 메서드.
+    public void printStudent(Student student) { //출력하는 메서드.
         System.out.println(makeStudentInfo(student));
     }
 

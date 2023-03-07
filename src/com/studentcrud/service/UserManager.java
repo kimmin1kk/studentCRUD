@@ -21,7 +21,7 @@ public class UserManager<T extends User> {
         if(findedUser == null) {
             return false;
         }else {
-            return pw.equals(findedUser.getPassword());
+            return pw.equals(findedUser.getPw());
         }
     }
     public void addUser(T t) throws IllegalArgumentException { // 입력받은 student ArrayList 를 리스트에 추가해주는 메서드
@@ -36,12 +36,8 @@ public class UserManager<T extends User> {
         return null;
     }
     public List<T> findAll() {
-        List<T> returnList = new ArrayList<>();
-//        returnList.addAll(userList);
-        for(T user: userList) {
-            returnList.add(user);
-        }
-        return returnList;
+        //        returnList.addAll(userList);
+        return new ArrayList<>(userList);
     }
 
 

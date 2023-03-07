@@ -1,14 +1,12 @@
 package com.studentcrud.service;
 
 import com.studentcrud.user.Student;
-import com.studentcrud.user.Teacher;
-import com.studentcrud.view.AdminInterface;
-import com.studentcrud.view.StudentInterface;
-import com.studentcrud.view.TeacherInterface;
+import com.studentcrud.view.AdminViewer;
+import com.studentcrud.view.StudentViewer;
 
 public class Client {
-    AdminInterface ai = new AdminInterface();
-    StudentInterface si = new StudentInterface();
+    AdminViewer ai = new AdminViewer();
+    StudentViewer si = new StudentViewer();
 //    TeacherInterface ti = new TeacherInterface(); 아직 안 씀
     UserManager<Student> studentManager = new UserManager<>();
 //    UserManager<Teacher> teacherManager = new UserManager<>(); 아직 안 씀
@@ -50,10 +48,10 @@ public class Client {
                     while (true) {
                         try {
                             studentManager.addUser(ai.typeStudent());
-                            ai.printSuccessSignUp();
+                            ai.printSuccessSignUp(); //회원가입 성공 메세지
                             break;
                         } catch (IllegalArgumentException ignored) {
-                            ai.printDuplicatedIdException();
+                            ai.printDuplicatedIdException(); //회원가입 실패 메세지
                         }
                     }
                     break;
@@ -87,7 +85,7 @@ public class Client {
         while (onOff) {
             switch (si.studentMainPage()) {
                 case 1:
-//                    si.printUser(student);
+                    ai.printStudent(student);
                     break;
                 case 2:
                     switch (si.replaceStudentInformation()) {

@@ -1,9 +1,9 @@
 package com.studentcrud.user;
 
 public class User {
-    private String id;
-    private String password;
-    private String name;
+    protected String id;
+    protected String pw;
+    protected String name;
 
     public String getId() {
         return id;
@@ -13,12 +13,12 @@ public class User {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPw() {
+        return pw;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
     public String getName() {

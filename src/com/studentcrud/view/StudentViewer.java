@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static com.studentcrud.config.Configuration.*;
 
-public class StudentInterface extends UserInterface{
+public class StudentViewer extends UserViewer {
     @Override
     protected void checkInstanceValidation(User user) {
         if (!(user instanceof Student)) throw new IllegalArgumentException();
@@ -86,7 +86,7 @@ public class StudentInterface extends UserInterface{
             System.out.println("--------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
-                num = sc.nextInt();
+                num = getInput();
             } catch (InputMismatchException e) {
                 sc = new Scanner(System.in);
                 System.out.println("정수형만 입력할 수 있습니다.");

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static com.studentcrud.config.Configuration.*;
 
-public abstract class UserInterface {
+public abstract class UserViewer {
     Student student = new Student();
     Teacher teacher = new Teacher();
     Scanner sc = new Scanner(System.in);

@@ -7,11 +7,10 @@ public class Configuration {
     public static final int PREVENT_MINUS_N_ZERO = 1;
     public static final int PREVENT_MINUS = 0;
 
-    public static final int INPUT_RANGE_LOGIN = 3;
+    public static final int INPUT_RANGE_LOGIN = 2; //처음 로그인 선택범위
 
-    public static final int INPUT_RANGE_STUDENT_MAIN = 4;
-    public static final int INPUT_RANGE_ADMIN_MAIN = 6;
-
-    public static final int INPUT_RANGE_STUDENT_MODIFY = 3;
+    public static final int INPUT_RANGE_STUDENT_MAIN = 4; //학생 메인화면 선택범위
+    public static final int INPUT_RANGE_ADMIN_MAIN = 6; //어드민 메인화면 선택범위
+    public static final int INPUT_RANGE_STUDENT_MODIFY = 3; //학생 수정 선택범위
 }
 
