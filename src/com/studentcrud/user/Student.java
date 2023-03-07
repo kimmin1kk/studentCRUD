@@ -15,17 +15,6 @@ public class Student extends User{ //오직 데이터만을 담고있다.
     }
     public Student() { //오버로딩
     }
-
-
-
-    public String getName() {
-        return name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public int getkScore() {
         return kScore;
     }
@@ -37,11 +26,4 @@ public class Student extends User{ //오직 데이터만을 담고있다.
     public int getmScore() {
         return mScore;
     }
-
-    public String getPw() {return pw;}
-
-    public void setName(String name) {this.name = name;}
-    public void setPw(String pw) {this.pw = pw;}
-
-
 }

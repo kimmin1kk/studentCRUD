@@ -1,7 +1,9 @@
 package com.studentcrud.view;
 
 import com.studentcrud.user.Student;
+import com.studentcrud.user.Subject;
 import com.studentcrud.user.User;
+import com.studentcrud.user.Teacher;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -81,12 +83,12 @@ public class AdminViewer extends UserViewer {
         while(onOff) {
             System.out.println("---------------------------");
             System.out.println("| 학생 관리 시스템 (관리자용) |");
-            System.out.println("------------------------------------------------------------");
-            System.out.println("| 1. 입력 | 2. 검색 | 3. 출력 | 4. 삭제 | 5. 로그아웃 | 6. 종료 |");
-            System.out.println("------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
+            System.out.println("|학생| 1. 추가 | 2. 검색 | 3. 출력 | 4. 삭제 ||교직원| 5. 추가 | 6. 수정 | 7. 삭제 || 8. 로그아웃 | 9. 종료 |");
+            System.out.println("----------------------------------------------------------------------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
-                num = sc.nextInt();
+                num = getInput();
             }
             catch (InputMismatchException e) {
                 sc = new Scanner(System.in);
@@ -104,17 +106,23 @@ public class AdminViewer extends UserViewer {
             }
             switch(num) {
                 case 1:
-                    System.out.println("입력을 선택하셨습니다.");break;
+                    System.out.println("학생 입력을 선택하셨습니다.");break;
                 case 2:
-                    System.out.println("검색을 선택하셨습니다.");break;
+                    System.out.println("학생 검색을 선택하셨습니다.");break;
                 case 3:
-                    System.out.println("출력을 선택하셨습니다.");break;
+                    System.out.println("학생 리스트 출력을 선택하셨습니다.");break;
                 case 4:
-                    System.out.println("삭제를 선택하셨습니다.");break;
+                    System.out.println("학생 삭제를 선택하셨습니다.");break;
                 case 5:
+                    System.out.println("교직원 추가를 선택하셨습니다.");break;
+                case 6:
+                    System.out.println("교직원 담당과목 수정을 선택하셨습니다.");break;
+                case 7:
+                    System.out.println("교직원 삭제를 선택하셨습니다.");break;
+                case 8:
                     System.out.println("로그아웃합니다.");
                     System.out.println("로그인 페이지로 넘어갑니다.");break;
-                case 6:
+                case 9:
                     onOff=false;
                     System.out.println("학생 관리 시스템을 종료합니다.");
                     break;
@@ -135,7 +143,6 @@ public class AdminViewer extends UserViewer {
     }
 
     public Student typeStudent() { // 학생 데이터 입력받는 메소드
-        Scanner sc = new Scanner(System.in);
         String name;
         int id ,kScore, eScore, mScore;
         System.out.print("이름을 입력하세요 :");
@@ -151,6 +158,43 @@ public class AdminViewer extends UserViewer {
         student = new Student(name, String.valueOf(id), kScore, eScore, mScore);
         return student;
     };
+
+    public Subject typeTeacherSubject() { // 1~3을 반환
+        int choose = 0;
+
+        System.out.println("담당 과목을 입력해주세요. 1.국어 2.영어 3.수학");
+        System.out.print("입력 : ");
+        while(true) {
+            choose = getInput();
+            if(choose > INPUT_RANGE_TEACHER_SUBJECT) {
+                System.out.println("1.국어 2.영어 3.수학입니다. 다시 입력해주세요");
+                System.out.print("입력 :");
+                sc = new Scanner(System.in);
+            }
+            else {
+                break;
+            }
+        }
+        if(choose == 1) {
+            return Subject.KOREAN;
+        }else if(choose == 2) {
+            return Subject.ENGLISH;
+        }else if(choose == 3) {
+            return Subject.MATH;
+        }else {
+            return null;
+        }
+    }
+
+    public Teacher typeTeacher() {
+        String name, id;
+        System.out.print("이름을 입력하세요 :");
+        name = sc.nextLine();
+        System.out.print("아이디를 입력하세요 :");
+        id = sc.nextLine();
+        teacher = new Teacher(name, id, typeTeacherSubject());
+        return teacher;
+    }
 
     public void printSuccessSignUp() {
         System.out.println("학생이 생성되었습니다. 초기 비밀번호는 학번과 동일합니다.");

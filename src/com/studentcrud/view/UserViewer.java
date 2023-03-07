@@ -14,10 +14,6 @@ public abstract class UserViewer {
     Teacher teacher = new Teacher();
     Scanner sc = new Scanner(System.in);
 
-//    public abstract void printUser(User user);
-//
-//    protected abstract String makeUserInfo(User user);
-
     public abstract String inputId();
 
     public abstract String inputPw();
