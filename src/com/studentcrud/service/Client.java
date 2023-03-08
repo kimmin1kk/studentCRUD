@@ -11,12 +11,7 @@ public class Client {
     StudentViewer sv = new StudentViewer();
     TeacherViewer tv = new TeacherViewer();
     UserManager<Student> studentManager = new UserManager<>();
-    UserManager<Teacher> teacherManager = new UserManager<Teacher>(){
-        @Override
-        public void addUser(Teacher teacher) throws IllegalArgumentException {
-            super.addUser(teacher);
-        }
-    } ;
+    UserManager<Teacher> teacherManager = new UserManager<Teacher>();
     public void run() {// 학생으로 로그인할지 관리자로 로그인할지 고를 수 있는 초기 페이지.
         String id;
         String pw;
@@ -109,9 +104,6 @@ public class Client {
                 case 9: // 종료
                     onOff = false;
                     break;
-                default:
-                    System.out.println("에러 발생");
-                    break;
             }
         }
 
@@ -127,10 +119,10 @@ public class Client {
                 case 2:
                     switch (sv.replaceStudentInformation()) {
                         case 1: //이름 변경
-                            studentManager.replaceUserName(student.getName(), sv.replaceStudentName(student));
+                            studentManager.replaceUserName(student.getName(), sv.replaceStudentName());
                             break;
                         case 2: //비밀번호 변경
-                            studentManager.replaceUserPassword(student.getName(), sv.replaceStudentPassword(student));
+                            studentManager.replaceUserPassword(student.getName(), sv.replaceStudentPassword());
                             break;
                         case 3: //취소
                             studentMainPage(student);
@@ -141,9 +133,6 @@ public class Client {
                     run();
                 case 4:
                     onOff = false;
-                    break;
-                default:
-                    System.out.println("에러 발생");
                     break;
             }
         }
@@ -161,15 +150,32 @@ public class Client {
                         av.printStudent(std);
                     }
                     break;
-                case 3: // 담당과목 점수 수정
+                case 3: // 담당과목 학생 점수 수정
+                    switch(teacher.getSubject()) {
+                        case KOREAN: //국어 점수만 수정
+                            tv.messageEditKoreanScore();
+                            studentManager.findById(sv.inputId()).setkScore(tv.editStudentKoreanScore());
+                            break;
+                        case ENGLISH: //영어 점수만 수정
+                            tv.messageEditEnglishScore();
+                            studentManager.findById(sv.inputId()).seteScore(tv.editStudentEnglishScore());
+                            break;
+                        case MATH: //수학 점수만 수정
+                            tv.messageEditMathScore();
+                            studentManager.findById(sv.inputId()).setmScore(tv.editStudentMathScore());
+                            break;
+                    }
                     break;
                 case 4: // 본인의 이름 및 비번 수정
                     switch(tv.replaceTeacherInformation()) {
                         case 1:
+                            teacherManager.replaceUserName(teacher.getName(), tv.replaceTeacherName());
                             break;
                         case 2:
+                            teacherManager.replaceUserPassword(teacher.getName(), tv.replaceTeacherPassword());
                             break;
                         case 3:
+                            teacherMainPage(teacher);
                             break;
                     }
                     break;
@@ -177,9 +183,6 @@ public class Client {
                     run();
                 case 6: // 종료
                     onOff = false;
-                    break;
-                default:
-                    System.out.println("에러 발생");
                     break;
             }
 

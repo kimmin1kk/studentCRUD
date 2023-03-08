@@ -1,6 +1,7 @@
 package com.studentcrud.view;
 
 import com.studentcrud.user.Student;
+import com.studentcrud.user.Subject;
 import com.studentcrud.user.Teacher;
 import com.studentcrud.user.User;
 
@@ -55,7 +56,7 @@ public class TeacherViewer extends UserViewer{
                 case 2:
                     System.out.println("학생 리스트 출력을 선택하셨습니다.");break;
                 case 3:
-                    System.out.println("담당과목 점수 수정을 선택하셨습니다.");break;
+                    break;
                 case 4:
                     System.out.println("정보 수정을 선택하셨습니다.");break;
                 case 5:
@@ -107,4 +108,37 @@ public class TeacherViewer extends UserViewer{
         }
         return num;
     }
+
+    public String replaceTeacherName() { // 이름을 수정할 때 쓰는 메서드
+        System.out.print("수정할 이름을 입력해주세요 :");
+        return sc.nextLine();
+    }
+
+
+    public String replaceTeacherPassword() { // 비밀번호를 수정할 때 쓰는 메서드
+        System.out.print("수정할 비밀번호를 입력해주세요 :");
+        return sc.nextLine();
+    }
+
+    public int editStudentKoreanScore() {
+        System.out.print("수정된 국어 점수를 입력해주세요 :");
+        return getScore();
+    }
+    public int editStudentEnglishScore() {
+        System.out.print("수정된 영어 점수를 입력해주세요 :");
+        return getScore();
+    }
+    public int editStudentMathScore() {
+        System.out.print("수정된 수학 점수를 입력해주세요 :");
+        return getScore();
+    }
+    public void messageEditKoreanScore() {
+        System.out.println("학생의 국어 점수를 수정합니다.");
+    }
+    public void messageEditEnglishScore() {
+        System.out.println("학생의 영어 점수를 수정합니다.");
+    }    public void messageEditMathScore() {
+        System.out.println("학생의 수학 점수를 수정합니다.");
+    }
+
 }

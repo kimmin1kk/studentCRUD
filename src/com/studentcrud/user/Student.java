@@ -26,4 +26,16 @@ public class Student extends User{ //오직 데이터만을 담고있다.
     public int getmScore() {
         return mScore;
     }
+
+    public void setkScore(int kScore) {
+        this.kScore = kScore;
+    }
+
+    public void seteScore(int eScore) {
+        this.eScore = eScore;
+    }
+
+    public void setmScore(int mScore) {
+        this.mScore = mScore;
+    }
 }

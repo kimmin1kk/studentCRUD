@@ -126,7 +126,12 @@ public class AdminViewer extends UserViewer {
     }
 
     public void printStudent(Student student) { //출력하는 메서드.
-        System.out.println(makeStudentInfo(student));
+        if(student != null) {
+            System.out.println(makeStudentInfo(student));
+        }else {
+            System.out.println("찾으시는 정보가 존재하지 않습니다.");
+        }
+
     }
 
     private String makeStudentInfo(Student student){ //인자로 받은 student 타입의 ArrayList 를 출력형식에 맞게 가공하는 메서드

@@ -1,13 +1,13 @@
 package com.studentcrud.user;
 
 public enum Subject {
-    MATH(1),
-    KOREAN(2),
-    ENGLISH(3);
+    MATH,
+    KOREAN,
+    ENGLISH;
 
-    int choose;
-
-    Subject(int choose) {
-        this.choose = choose;
-    }
+//    int choose;
+//
+//    Subject(int choose) {
+//        this.choose = choose;
+//    }
 }

@@ -106,24 +106,12 @@ public class StudentViewer extends UserViewer {
         }
         return num;
     }
-
-//    public String replaceStudentName(Student student) { // 이름을 수정할 때 쓰는 메서드
-//        System.out.print("수정할 이름을 입력해주세요 :");
-//        String name = sc.nextLine();
-//        student.setName(name);
-//        return name;
-//    }
-
-    public String replaceStudentName(Student student) { // 이름을 수정할 때 쓰는 메서드
+    public String replaceStudentName() { // 이름을 수정할 때 쓰는 메서드
         System.out.print("수정할 이름을 입력해주세요 :");
-        String name = sc.nextLine();
-        return name;
+        return sc.nextLine();
     }
-
-
-    public String replaceStudentPassword(Student student) { // 비밀번호를 수정할 때 쓰는 메서드
+    public String replaceStudentPassword() { // 비밀번호를 수정할 때 쓰는 메서드
         System.out.print("수정할 비밀번호를 입력해주세요 :");
-        String password = sc.nextLine();
-        return password;
+        return sc.nextLine();
     }
 }
