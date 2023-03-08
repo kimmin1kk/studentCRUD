@@ -1,18 +1,15 @@
 package com.studentcrud.service;
 
-import com.studentcrud.user.Student;
 import com.studentcrud.user.User;
-import com.sun.corba.se.impl.protocol.AddressingDispositionException;
-import sun.security.util.ManifestEntryVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class UserManager<T extends User> {
+public class UserManager<T extends User>  {
     private final ArrayList<T> userList = new ArrayList<>();
 
-    public boolean findUserByIdAndPassword(String id,String pw) { //입력 받은 인자로 로그인 하는 메서드
+    public boolean findUserByIdAndPassword(String id, String pw) { //입력 받은 인자로 로그인 하는 메서드
         User findedUser = null;
         for(T user : userList) {
             if(Objects.equals(id, user.getId())) { //아이디 체크
@@ -41,7 +38,7 @@ public class UserManager<T extends User> {
     }
 
 
-    public boolean isExistenceUserById (String id) { //중복 있으면 true 없으면 false 반환 입력할 때 쓰는 메서드
+    public boolean isExistenceUserById(String id) { //중복 있으면 true 없으면 false 반환 입력할 때 쓰는 메서드
         return findById(id) != null;
     }
 

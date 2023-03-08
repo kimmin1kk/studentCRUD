@@ -1,20 +1,15 @@
 package com.studentcrud.view;
 
-import com.studentcrud.user.Student;
-import com.studentcrud.user.Subject;
-import com.studentcrud.user.Teacher;
-import com.studentcrud.user.User;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static com.studentcrud.config.Configuration.*;
 
 public class TeacherViewer extends UserViewer{
-    @Override
-    protected void checkInstanceValidation(User user) {
-        if (!(user instanceof Teacher)) throw new IllegalArgumentException();
-    }
+//    @Override
+//    protected void checkInstanceValidation(User user) {
+//        if (!(user instanceof Teacher)) throw new IllegalArgumentException();
+//    }
 
     public String inputId() { // 아이디를 입력하는 메서드
         String id = null;

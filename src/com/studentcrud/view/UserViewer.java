@@ -2,7 +2,6 @@ package com.studentcrud.view;
 
 import com.studentcrud.user.Student;
 import com.studentcrud.user.Teacher;
-import com.studentcrud.user.User;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -24,7 +23,7 @@ public abstract class UserViewer {
         return pw;
     }
 
-    protected abstract void checkInstanceValidation(User user);
+//    protected abstract void checkInstanceValidation(User user);
 
     public int getScore() { //점수 입력할 때 예외처리해둔 메서드
         int a = 0;

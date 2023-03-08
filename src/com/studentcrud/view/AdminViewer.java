@@ -11,13 +11,10 @@ import java.util.Scanner;
 import static com.studentcrud.config.Configuration.*;
 
 public class AdminViewer extends UserViewer {
-    /*
-    *
-    * */
-    @Override
-    protected void checkInstanceValidation(User user) {
-        if (!(user instanceof Student)) throw new IllegalArgumentException();
-    }
+//    @Override
+//    protected void checkInstanceValidation(User user) {
+//        if (!(user instanceof Student)) throw new IllegalArgumentException();
+//    }
 
     public int loginPage() { // 처음 화면을 켰을 때 ui 메서드
         int choose = 0, num = 0;
@@ -48,7 +45,6 @@ public class AdminViewer extends UserViewer {
 
 
     public int adminLogin() { // 어드민 로그인을 선택했을 때 ui 메서드
-        Scanner sc = new Scanner(System.in);
         String check = null;int value=0;
         System.out.println("관리자 비밀번호를 입력해주세요. 취소하려면 cancel을 입력해주세요.");
         while(true) {
@@ -76,9 +72,9 @@ public class AdminViewer extends UserViewer {
         while(onOff) {
             System.out.println("---------------------------");
             System.out.println("| 학생 관리 시스템 (관리자용) |");
-            System.out.println("--------------------------------------------------------------------------------------------");
-            System.out.println("│학생 | 1.추가 | 2.검색 | 3.출력 | 4.삭제 │교직원 | 5.추가 | 6.출력 | 7. 삭제 │ 8.로그아웃 | 9.종료 |");
-            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
+            System.out.println("│학생 | 1. 추가 | 2. 검색 | 3. 출력 | 4. 삭제 │교직원 | 5. 추가 | 6. 출력 | 7. 삭제 │ 8. 로그아웃 | 9. 종료 |");
+            System.out.println("----------------------------------------------------------------------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
                 num = getInput();

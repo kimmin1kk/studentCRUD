@@ -1,8 +1,5 @@
 package com.studentcrud.view;
 
-import com.studentcrud.user.Student;
-import com.studentcrud.user.User;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,10 +7,10 @@ import java.util.Scanner;
 import static com.studentcrud.config.Configuration.*;
 
 public class StudentViewer extends UserViewer {
-    @Override
-    protected void checkInstanceValidation(User user) {
-        if (!(user instanceof Student)) throw new IllegalArgumentException();
-    }
+//    @Override
+//    protected void checkInstanceValidation(User user) {
+//        if (!(user instanceof Student)) throw new IllegalArgumentException();
+//    }
 
     public String inputId() { // 아이디를 입력하는 메서드
         int id = 0;
@@ -24,15 +21,14 @@ public class StudentViewer extends UserViewer {
 
 
     public int studentMainPage() { // 학생으로 로그인 했을 때 ui 메서드
-        Scanner sc = new Scanner(System.in);
         int num=0;
         boolean onOff= true;
         while(onOff) {
             System.out.println("-------------------------");
             System.out.println("| 학생 관리 시스템 (학생용) |");
-            System.out.println("-----------------------------------");
+            System.out.println("----------------------------------------------");
             System.out.println("| 1. 성적 열람 | 2. 수정 | 3. 로그아웃 | 4. 종료 |");
-            System.out.println("-----------------------------------");
+            System.out.println("----------------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
                 num = getInput();
@@ -74,9 +70,9 @@ public class StudentViewer extends UserViewer {
         while (onOff) {
             System.out.println("----------------");
             System.out.println("| 학생 정보 수정 |");
-            System.out.println("--------------------------------------");
-            System.out.println("| 1. 이름 변경 | 2 비밀번호 변경 | 3 취소 |");
-            System.out.println("--------------------------------------");
+            System.out.println("----------------------------------------");
+            System.out.println("| 1. 이름 변경 | 2. 비밀번호 변경 | 3. 취소 |");
+            System.out.println("----------------------------------------");
             try {
                 System.out.print("값을 입력해주세요 : ");
                 num = getInput();
