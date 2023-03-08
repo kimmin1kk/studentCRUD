@@ -68,4 +68,43 @@ public class TeacherViewer extends UserViewer{
         }
         return num;
     }
+
+    public int replaceTeacherInformation() { // 학생으로 로그인해서 수정을 선택했을 때 호출되는 ui 메서드
+        int num = 0;
+        boolean onOff = true;
+        while (onOff) {
+            System.out.println("-----------------");
+            System.out.println("| 교직원 정보 수정 |");
+            System.out.println("-----------------------------------------");
+            System.out.println("| 1. 이름 변경 | 2. 비밀번호 변경 | 3. 취소 |");
+            System.out.println("-----------------------------------------");
+            try {
+                System.out.print("값을 입력해주세요 : ");
+                num = getInput();
+            } catch (InputMismatchException e) {
+                sc = new Scanner(System.in);
+                System.out.println("정수형만 입력할 수 있습니다.");
+                continue;
+            }
+            if (num < PREVENT_MINUS_N_ZERO) {
+                sc = new Scanner(System.in);
+                System.out.println("잘못된 입력입니다.");
+                continue;
+            } else if (num > INPUT_RANGE_MODIFY) {
+                sc = new Scanner(System.in);
+                System.out.println("잘못된 입력입니다.");
+                continue;
+            }
+            switch(num) {
+                case 1:
+                    System.out.println("이름 변경을 선택하셨습니다.");break;
+                case 2:
+                    System.out.println("비밀번호 변경을 선택하셨습니다.");break;
+                case 3:
+                    System.out.println("정보 수정을 취소합니다.");break;
+            }
+            return num;
+        }
+        return num;
+    }
 }

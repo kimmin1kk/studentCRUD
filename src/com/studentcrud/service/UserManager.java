@@ -1,5 +1,6 @@
 package com.studentcrud.service;
 
+import com.studentcrud.user.Student;
 import com.studentcrud.user.User;
 import com.sun.corba.se.impl.protocol.AddressingDispositionException;
 import sun.security.util.ManifestEntryVerifier;
@@ -36,7 +37,6 @@ public class UserManager<T extends User> {
         return null;
     }
     public List<T> findAll() {
-        //        returnList.addAll(userList);
         return new ArrayList<>(userList);
     }
 
@@ -54,5 +54,13 @@ public class UserManager<T extends User> {
             }
             cnt ++;
         }
+    }
+
+    public void replaceUserName(String beforeName, String afterName) { // 이름을 수정할 때 쓰는 메서드
+        findById(beforeName).setName(afterName);
+    }
+
+    public void replaceUserPassword(String name, String afterPassword) {
+        findById(name).setPw(afterPassword);
     }
 }

@@ -127,10 +127,10 @@ public class Client {
                 case 2:
                     switch (sv.replaceStudentInformation()) {
                         case 1: //이름 변경
-                            sv.replaceStudentName(student);
+                            studentManager.replaceUserName(student.getName(), sv.replaceStudentName(student));
                             break;
                         case 2: //비밀번호 변경
-                            sv.replaceStudentPassword(student);
+                            studentManager.replaceUserPassword(student.getName(), sv.replaceStudentPassword(student));
                             break;
                         case 3: //취소
                             studentMainPage(student);
@@ -164,6 +164,14 @@ public class Client {
                 case 3: // 담당과목 점수 수정
                     break;
                 case 4: // 본인의 이름 및 비번 수정
+                    switch(tv.replaceTeacherInformation()) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
                     break;
                 case 5: // 로그아웃
                     run();

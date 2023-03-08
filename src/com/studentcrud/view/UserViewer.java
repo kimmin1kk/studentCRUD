@@ -33,12 +33,7 @@ public abstract class UserViewer {
             try {
                 a = Integer.parseInt(sc.nextLine());
             }
-            catch (InputMismatchException e) {
-                sc = new Scanner(System.in);
-                System.out.println("정수형만 입력할 수 있습니다.");
-                System.out.print("입력 : ");
-                continue;
-            }catch (NumberFormatException e) {
+            catch (InputMismatchException | NumberFormatException e) {
                 sc = new Scanner(System.in);
                 System.out.println("정수형만 입력할 수 있습니다.");
                 System.out.print("입력 : ");
